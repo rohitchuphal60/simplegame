@@ -21,6 +21,8 @@ cd TextEditor
 ### After this you have to build this and then run 
 ``` bash
 # Build
+mkdir build && cd build
+cmake ..
 make
 
 # Run the editor

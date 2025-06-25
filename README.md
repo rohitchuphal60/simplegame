@@ -11,7 +11,7 @@ A lightweight and simple game written in C/C++.
 
 ```bash
 # Clone the project
-git clone https://github.com/rohitchuphal60/simplegame.git
+git clone git@github.com:rohitchuphal60/simplegame.git
 
 # Switch to projects directory
 

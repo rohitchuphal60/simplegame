@@ -1,27 +1,113 @@
-#include <GL/freeglut.h>
-#include <string>
-#include <iostream>
+#include <GL/glut.h>
+#include <vector>
+#include <ctime>
+#include <cstdlib>
+#include <cmath>       
+#include <algorithm>   
+
+
 
 using namespace std ;
-void renderBitmapString(float x, float y, void *font, const std::string &str) {
-    glRasterPos2f(x, y);
-    for (char c : str) {
-        glutBitmapCharacter(font, c);
-    }
+int windowWidth = 500;
+int windowHeight = 500;
+
+float playerX = 0.0f;
+float playerSize = 0.1f;
+
+struct Block {
+    float x, y;
+};
+
+std::vector<Block> blocks;
+float blockSize = 0.1f;
+float blockSpeed = 0.01f;
+
+bool gameOver = false;
+
+void drawSquare(float x, float y, float size) {
+    glBegin(GL_QUADS);
+    glVertex2f(x - size, y - size);
+    glVertex2f(x + size, y - size);
+    glVertex2f(x + size, y + size);
+    glVertex2f(x - size, y + size);
+    glEnd();
 }
 
 void display() {
     glClear(GL_COLOR_BUFFER_BIT);
-    glLoadIdentity();
 
-    // Set text color (white)
-    glColor3f(1.0, 1.0, 1.0);
+    if (gameOver) {
+        // Draw Game Over screen
+        glColor3f(1.0, 0.0, 0.0);
+        glRasterPos2f(-0.3f, 0.0f);
+        const char *msg = "Game Over";
+        while (*msg) {
+            glutBitmapCharacter(GLUT_BITMAP_HELVETICA_18, *msg++);
+        }
+        glutSwapBuffers();
+        return;
+    }
 
-    // Coordinates in normalized OpenGL coordinates (-1 to 1)
-    // 0.0f on both axes is roughly center
-    renderBitmapString(-0.05f, 0.0f, GLUT_BITMAP_HELVETICA_18, "rohit");
+    // Draw player
+    glColor3f(0.0, 1.0, 0.0);
+    drawSquare(playerX, -0.9f, playerSize);
+
+    // Draw blocks
+    glColor3f(1.0, 0.0, 0.0);
+    for (const auto &b : blocks) {
+        drawSquare(b.x, b.y, blockSize);
+    }
 
     glutSwapBuffers();
+}
+
+void timer(int value) {
+    if (!gameOver) {
+        // Move blocks
+        for (auto &b : blocks) {
+            b.y -= blockSpeed;
+
+            // Collision detection
+            if (b.y - blockSize < -0.9f + playerSize &&
+                b.y + blockSize > -0.9f - playerSize &&
+                fabs(b.x - playerX) < playerSize + blockSize) {
+                gameOver = true;
+            }
+        }
+
+        // Remove off-screen blocks
+        blocks.erase(std::remove_if(blocks.begin(), blocks.end(), [](Block &b) {
+            return b.y < -1.2f;
+        }), blocks.end());
+
+        // Spawn new block randomly
+        if (rand() % 30 == 0) {
+            float x = (rand() % 200 - 100) / 100.0f; // Random between -1.0 and 1.0
+            blocks.push_back({x, 1.0f});
+        }
+
+        glutPostRedisplay();
+        glutTimerFunc(16, timer, 0); // ~60 FPS
+    }
+}
+
+void keyboard(unsigned char key, int, int) {
+    if (key == 'a') {
+        playerX -= 0.1f;
+        if (playerX < -1.0f + playerSize)
+            playerX = -1.0f + playerSize;
+    } else if (key == 'd') {
+        playerX += 0.1f;
+        if (playerX > 1.0f - playerSize)
+            playerX = 1.0f - playerSize;
+    } else if (key == 'r' && gameOver) {
+        // Restart game
+        gameOver = false;
+        blocks.clear();
+        playerX = 0.0f;
+        glutTimerFunc(16, timer, 0);
+    }
+    glutPostRedisplay();
 }
 
 void reshape(int w, int h) {
@@ -32,17 +118,20 @@ void reshape(int w, int h) {
     glMatrixMode(GL_MODELVIEW);
 }
 
-int main(int argc, char** argv) {
+int main(int argc, char **argv) {
+    srand(time(0));
+
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB);
-    glutInitWindowSize(500, 500);
-    glutCreateWindow("Show Rohit");
+    glutInitWindowSize(windowWidth, windowHeight);
+    glutCreateWindow("Dodge Game");
 
     glutDisplayFunc(display);
+    glutKeyboardFunc(keyboard);
     glutReshapeFunc(reshape);
+    glutTimerFunc(0, timer, 0);
 
-    glClearColor(1.0, 1.0, 1.0, 1.0);
-
+    glClearColor(0.0, 0.0, 0.0, 1.0);
     glutMainLoop();
     return 0;
 }

@@ -20,5 +20,8 @@ cd TextEditor
 
 ### After this you have to compile this and then run 
 ``` bash
-c++ main.cpp -o main
+c++ main.cpp -o main -lGL -lGLU -lglut
 ```
+
+### if it show error you have to install openGl library in your system
+

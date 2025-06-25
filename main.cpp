@@ -1,8 +1,10 @@
-#include "core/editor.hpp"
+// main.cpp
+#include "ui/opengl_screen.hpp"
 
 int main() {
-    Editor editor;
-    editor.init();
-    editor.run();
+    OpenGLScreen gui;
+    gui.init();
+    gui.mainLoop();  // render editor buffer with OpenGL
+    gui.cleanup();
     return 0;
 }

@@ -1,6 +1,6 @@
-# A simple Text Editor in C/C++
+# A simple game made in C/C++
 
-A lightweight, modular, and simple text editor written in C/C++. 
+A lightweight and simple game written in C/C++. 
 
 ---
 
@@ -11,11 +11,11 @@ A lightweight, modular, and simple text editor written in C/C++.
 
 ```bash
 # Clone the project
-git clone https://github.com/rohitchuphal60/TextEditor.git
+git clone https://github.com/rohitchuphal60/simplegame.git
 
 # Switch to projects directory
 
-cd TextEditor
+cd simplegame
 ```
 
 ### After this you have to compile this and then run 

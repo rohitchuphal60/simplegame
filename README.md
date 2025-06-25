@@ -1,6 +1,6 @@
-# A Terminal-Based Text Editor in C/C++
+# A simple Text Editor in C/C++
 
-A lightweight, modular, and extensible Vim-like text editor written in C/C++. 
+A lightweight, modular, and simple text editor written in C/C++. 
 
 ---
 

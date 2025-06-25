@@ -11,7 +11,7 @@ A lightweight, modular, and extensible Vim-like text editor written in C/C++.
 
 ```bash
 # Clone the project
-git https://github.com/rohitchuphal60/TextEditor.git
+git clone https://github.com/rohitchuphal60/TextEditor.git
 
 # Switch to projects directory
 

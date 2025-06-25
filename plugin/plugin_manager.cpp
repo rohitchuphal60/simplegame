@@ -1,4 +1,4 @@
-#include "plugin/plugin_manager.hpp"
+#include "plugin_manager.hpp"
 #include <iostream>
 
 void PluginManager::loadPlugins() {

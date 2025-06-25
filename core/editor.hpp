@@ -1,15 +1,12 @@
 #pragma once
-#include "core/buffer.hpp"
-#include "ui/screen.hpp"
-#include "modes/mode_handler.hpp"
+#include "screen.hpp"
 
 class Editor {
 public:
+    Editor(Screen* s);
     void init();
     void run();
+
 private:
-    Buffer buffer;
-    Screen screen;
-    ModeHandler modeHandler;
-    bool running = true;
+    Screen* screen;
 };

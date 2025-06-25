@@ -1,4 +1,4 @@
-#include "syntax/highlighter.hpp"
+#include "highlighter.hpp"
 #include <iostream>
 
 void Highlighter::highlightLine(const std::string& line) {

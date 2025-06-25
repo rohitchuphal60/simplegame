@@ -1,19 +1,15 @@
-#include "core/editor.hpp"
-#include <iostream>
+#include "editor.hpp"
+
+Editor::Editor(Screen* s) : screen(s) {}
 
 void Editor::init() {
-    screen.init();
-    buffer.load("sample.txt");
+    screen->init();
 }
 
 void Editor::run() {
-    while (running) {
-        screen.clear();
-        buffer.render(screen);
-        screen.moveCursor(buffer.cursorX, buffer.cursorY);
-        screen.refresh();
-
-        char key = screen.readKey();
-        modeHandler.handleInput(key, buffer, running);
-    }
+    screen->clear();
+    screen->moveCursor(0, 0);
+    screen->drawLine("Welcome to Vim Clone!");
+    screen->refresh();
+    char key = screen->readKey();
 }

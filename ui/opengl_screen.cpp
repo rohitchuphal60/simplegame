@@ -1,37 +1,36 @@
-#include "ui/screen.hpp"
-#include <termios.h>
-#include <unistd.h>
+#include "opengl_screen.hpp"
 #include <iostream>
 
-static struct termios orig;
+OpenGLScreen::~OpenGLScreen() = default;
 
-void Screen::init() {
-    tcgetattr(STDIN_FILENO, &orig);
-    atexit([]() { tcsetattr(STDIN_FILENO, TCSAFLUSH, &orig); });
-
-    struct termios raw = orig;
-    raw.c_lflag &= ~(ECHO | ICANON | ISIG);
-    tcsetattr(STDIN_FILENO, TCSAFLUSH, &raw);
+void OpenGLScreen::init() {
+    std::cout << "OpenGL init()\n";
 }
 
-void Screen::clear() {
-    std::cout << "\x1b[2J\x1b[H";
+void OpenGLScreen::clear() {
+    std::cout << "OpenGL clear()\n";
 }
 
-void Screen::refresh() {
-    std::cout.flush();
+void OpenGLScreen::refresh() {
+    std::cout << "OpenGL refresh()\n";
 }
 
-void Screen::drawLine(const std::string& line) {
-    std::cout << line << "\r\n";
+void OpenGLScreen::drawLine(const std::string& line) {
+    std::cout << "OpenGL drawLine(): " << line << "\n";
 }
 
-void Screen::moveCursor(int x, int y) {
-    std::cout << "\x1b[" << y+1 << ";" << x+1 << "H";
+void OpenGLScreen::moveCursor(int x, int y) {
+    std::cout << "Move cursor to " << x << ", " << y << "\n";
 }
 
-char Screen::readKey() {
-    char c;
-    read(STDIN_FILENO, &c, 1);
-    return c;
+char OpenGLScreen::readKey() {
+    return 'a'; // stub
+}
+
+void OpenGLScreen::mainLoop() {
+    // OpenGL main loop stub
+}
+
+void OpenGLScreen::cleanup() {
+    std::cout << "Cleanup\n";
 }

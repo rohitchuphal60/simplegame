@@ -1,4 +1,4 @@
-#include "core/buffer.hpp"
+#include "buffer.hpp"
 #include <fstream>
 
 void Buffer::load(const std::string& filename) {

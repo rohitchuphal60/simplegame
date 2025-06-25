@@ -7,7 +7,8 @@ INCLUDES = -I. -Icore -Iui -Imodes -Icommand -Isyntax -Iplugin -Iutil
 SRC = \
     main.cpp \
     core/editor.cpp core/buffer.cpp \
-    ui/screen.cpp \
+    ui/opengl_screen.cpp \
+	ui/opengl_screen.o  \
     modes/mode_handler.cpp \
     command/command_parser.cpp \
     syntax/highlighter.cpp \

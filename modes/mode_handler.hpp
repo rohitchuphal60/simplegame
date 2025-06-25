@@ -1,5 +1,5 @@
 #pragma once
-#include "core/buffer.hpp"
+#include "buffer.hpp"
 
 class ModeHandler {
 public:

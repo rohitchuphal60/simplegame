@@ -1,10 +1,16 @@
-// ui/opengl_screen.hpp
 #pragma once
+#include "screen.hpp"
+#include <string>
 
-class OpenGLScreen {
+class OpenGLScreen : public Screen {
 public:
-    void init();
-    void renderText(const std::string& text, float x, float y);
+    void init() override;
+    void clear() override;
+    void refresh() override;
+    void drawLine(const std::string& line) override;
+    void moveCursor(int x, int y) override;
+    char readKey() override;
     void mainLoop();
     void cleanup();
+    ~OpenGLScreen() override;
 };

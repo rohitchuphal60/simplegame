@@ -1,7 +1,7 @@
 #pragma once
 #include <vector>
 #include <string>
-#include "ui/screen.hpp"
+#include "screen.hpp"
 
 class Buffer {
 public:

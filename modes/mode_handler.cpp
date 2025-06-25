@@ -1,4 +1,4 @@
-#include "modes/mode_handler.hpp"
+#include "mode_handler.hpp"
 
 void ModeHandler::handleInput(char key, Buffer& buffer, bool& running) {
     if (mode == Mode::NORMAL) {

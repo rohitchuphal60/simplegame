@@ -18,13 +18,7 @@ git clone https://github.com/rohitchuphal60/TextEditor.git
 cd TextEditor
 ```
 
-### After this you have to build this and then run 
+### After this you have to compile this and then run 
 ``` bash
-# Build
-mkdir build && cd build
-cmake ..
-make
-
-# Run the editor
-./TextEditor
+c++ main.cpp -o main
 ```

@@ -8,8 +8,8 @@
 
 
 using namespace std ;
-int windowWidth = 500;
-int windowHeight = 500;
+int windowWidth = 600;
+int windowHeight = 600;
 
 float playerX = 0.0f;
 float playerSize = 0.1f;
@@ -18,7 +18,7 @@ struct Block {
     float x, y;
 };
 
-std::vector<Block> blocks;
+vector<Block> blocks;
 float blockSize = 0.1f;
 float blockSpeed = 0.01f;
 

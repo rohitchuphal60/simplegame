@@ -4,7 +4,7 @@
 #include <cstdlib>
 #include <cmath>       
 #include <algorithm>   
-
+#include <iostream>
 
 
 using namespace std ;
@@ -92,11 +92,11 @@ void timer(int value) {
 }
 
 void keyboard(unsigned char key, int, int) {
-    if (key == 'a') {
+    if (key == '4') {
         playerX -= 0.1f;
         if (playerX < -1.0f + playerSize)
             playerX = -1.0f + playerSize;
-    } else if (key == 'd') {
+    } else if (key == '6') {
         playerX += 0.1f;
         if (playerX > 1.0f - playerSize)
             playerX = 1.0f - playerSize;

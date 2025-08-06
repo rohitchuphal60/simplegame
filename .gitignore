@@ -1,11 +1,9 @@
 # Build directory
 /build/
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
+
 main
 game
+camera
 # Compiled binaries
 /TextEditor
 *.o

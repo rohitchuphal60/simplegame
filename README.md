@@ -1,4 +1,9 @@
 
-```bash
-gcc game.c -o game  -lraylib -lGL -lm -lpthread -ldl -lrt -lX11
-```
+## game made in pure c++
+
+
+'''
+g++ main.cpp -o main -lraylib -lGL -lm -ldl -lpthread -lrt -lX11
+'''
+
+

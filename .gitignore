@@ -1,34 +1,4 @@
-# Build directory
-/build/
-
+# Godot 4+ specific ignores
 main
-game
-camera
-# Compiled binaries
-/TextEditor
-*.o
-*.obj
-*.so
-*.a
-*.exe
-*.out
 
-# Editor/IDE files
-.vscode/
-.idea/
-*.swp
-*~
-
-# Logs and temporary files
-*.log
-*.tmp
-*.bak
-
-# MacOS files
-.DS_Store
-
-# Debugger files
-*.dSYM/
-
-# Optional: user config
-*.user
+.exe

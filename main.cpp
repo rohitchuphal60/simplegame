@@ -1,5 +1,5 @@
 #include "raylib.h"
-#include <GL/gl.h>  // OpenGL header
+#include <GL/gl.h>  
 
 int main() {
     InitWindow(800, 600, "Raylib + OpenGL");
@@ -7,9 +7,9 @@ int main() {
 
     while (!WindowShouldClose()) {
         BeginDrawing();
-        ClearBackground(RAYWHITE);
+        ClearBackground(BLACK);
 
-        DrawText("Hello Raylib!", 190, 200, 20, LIGHTGRAY);
+        DrawText("Hello Raylib!", 190, 200, 200, LIGHTGRAY);
 
         // Raw OpenGL example (draw a red line)
         glBegin(GL_LINES);
